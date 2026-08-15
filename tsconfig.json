@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "strict": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
@@ -11,8 +11,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "noEmit": true,
-    "types": ["node", "react"],
-    "baseUrl": "."
+    "types": ["node", "react"]
   },
   "include": ["frontend/**/*.ts", "frontend/**/*.tsx", "backend/**/*.ts", "shared/**/*.ts"]
 }

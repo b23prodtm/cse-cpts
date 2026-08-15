@@ -121,7 +121,7 @@ export async function upsertTransaction(executor: SqlExecutor, transaction: Tran
         modifié_par = EXCLUDED.modifié_par,
         modifié_le = EXCLUDED.modifié_le
     `,
-    transaction,
+    transaction as unknown as Record<string, unknown>,
   );
 }
 
