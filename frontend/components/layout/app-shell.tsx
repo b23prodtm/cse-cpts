@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { BookOpenText, BookText, Gift, LayoutDashboard, ReceiptText, Users } from "lucide-react";
+import { BookOpenText, BookText, Gift, LayoutDashboard, ReceiptText, Settings2, Users } from "lucide-react";
 import { cn } from "../../lib/cn";
 
 const navigation = [
@@ -8,6 +8,7 @@ const navigation = [
   { label: "Bilans", icon: BookText },
   { label: "Contacts", icon: Users },
   { label: "Chèques cadeaux", icon: Gift },
+  { label: "Installation & connecteurs", icon: Settings2 },
   { label: "Aide & conformité", icon: BookOpenText },
 ];
 

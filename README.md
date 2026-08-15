@@ -25,11 +25,42 @@ Application Retool interne en français pour la comptabilité de trésorerie sim
 
 1. Créer une application Retool interne nommée **CSE Comptes**.
 2. Limiter son accès aux utilisateurs authentifiés de l'organisation Retool.
-3. Créer les pages avec les composants de `/frontend/pages`.
+3. Créer les pages avec les composants de `/frontend/pages`, y compris la page **Installation & connecteurs**.
 4. Créer les fonctions backend à partir des fichiers du dossier `/backend`.
-5. Connecter les ressources Retool Database/PostgreSQL, Retool Storage et Google Docs.
+5. Enregistrer les connecteurs suivants dans Retool :
+   - `retool_db_or_postgres` : ressource **Retool Database** ou **PostgreSQL** privée ;
+   - `retool_storage_private` : ressource **Retool Storage** privée pour les justificatifs ;
+   - `google_workspace_cse_docs` : ressource **Google Docs** connectée au compte Workspace autorisé du CSE.
 6. Exécuter le script `backend/schema.sql` sur la base retenue.
-7. Remplacer les données fictives de démonstration par les appels backend réels.
+7. Vérifier les permissions par rôle avant usage :
+   - Trésorier / Trésorière : lecture/écriture/validation/export ;
+   - Membres élus : lecture seule ;
+   - Administrateur : gestion des accès et des connecteurs.
+8. Remplacer les données fictives de démonstration par les appels backend réels.
+
+## Procédure de connexion des ressources
+
+### 1. Retool Database ou PostgreSQL
+
+- Créer ou connecter une ressource privée.
+- Lui donner le nom interne `retool_db_or_postgres`.
+- Exécuter `/home/runner/work/cse-cpts/cse-cpts/backend/schema.sql`.
+- Tester l'accès en lecture/écriture depuis les fonctions backend uniquement.
+
+### 2. Retool Storage
+
+- Activer un stockage privé pour les justificatifs.
+- Lui donner le nom interne `retool_storage_private`.
+- Utiliser un dossier logique `justificatifs`.
+- Vérifier le téléversement depuis mobile sans exposition publique du fichier.
+
+### 3. Google Docs / Google Workspace
+
+- Connecter une unique ressource Google Docs.
+- Lui donner le nom interne `google_workspace_cse_docs`.
+- Utiliser le compte Google Workspace autorisé du CSE.
+- Ne stocker aucun secret Google dans le dépôt ni dans le frontend.
+- Tester la création d'un document `Bilan CSE — [période]` puis laisser le partage au niveau Google Workspace.
 
 ## Comportement fonctionnel attendu
 
